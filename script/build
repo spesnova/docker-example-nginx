@@ -1,0 +1,11 @@
+#!/bin/bash
+#
+# Usage: script/build
+# Description: build Nginx image
+#
+
+set -e
+
+IMAGE="quay.io/spesnova/docker-example-nginx"
+
+docker build -t="${IMAGE}" .
