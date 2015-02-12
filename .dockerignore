@@ -1,4 +1,4 @@
-.git/*
+.git
 .gitignore
 README.md
 script/*
@@ -26,6 +26,6 @@ Temporary Items
 #
 # Vagrant
 #
-coreos/*
+coreos
 .env
 .vagrant
