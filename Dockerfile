@@ -42,8 +42,10 @@ RUN mkdir -p /etc/nginx && \
     mkdir -p /var/www/nginx/tmp
 
 # Add config files
-COPY files/nginx.conf   /etc/nginx/nginx.conf
-COPY files/mime.types   /etc/nginx/mime.types
+COPY files/error.html       /var/www/nginx/html/error.html
+COPY files/maintenance.html /var/www/nginx/html/maintenance.html
+COPY files/mime.types       /etc/nginx/mime.types
+COPY files/nginx.conf       /etc/nginx/nginx.conf
 
 EXPOSE 80 8090
 
