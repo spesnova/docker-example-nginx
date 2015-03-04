@@ -8,9 +8,10 @@ build:
     - script:
         name: Install compose
         code: |
-          curl -L https://github.com/docker/compose/releases/download/1.1.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/compose
-          chmod +x /usr/local/bin/compose
-          cd ${WERCKER_SOURCE_DIR}
+          curl -L https://github.com/docker/compose/releases/download/1.1.0/docker-compose-`uname -s`-`uname -m` > /tmp/compose
+          sudo mkdir -pv /opt/bin
+          sudo mv /tmp/compose /opt/bin/compose
+          chmod +x /opt/bin/compose
     - script:
         name: Build image
         code: >
