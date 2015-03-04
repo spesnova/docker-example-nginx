@@ -6,6 +6,6 @@
 
 set -e
 
-IMAGE="quay.io/spesnova/docker-example-nginx"
+IMAGE="quay.io/spesnova/docker-example-nginx:latest"
 
 docker build -t="${IMAGE}" .
