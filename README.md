@@ -1,2 +1,2 @@
-# Docker Example for Nginx [![Docker Repository on Quay.io](https://quay.io/repository/spesnova/docker-example-nginx/status "Docker Repository on Quay.io")](https://quay.io/repository/spesnova/docker-example-nginx)
+# Docker Example for Nginx [![Docker Repository on Quay.io](https://quay.io/repository/spesnova/docker-example-nginx/status "Docker Repository on Quay.io")](https://quay.io/repository/spesnova/docker-example-nginx) [![wercker status](https://app.wercker.com/status/bda2c8de096401f65e6cdf204dc87572/s "wercker status")](https://app.wercker.com/project/bykey/bda2c8de096401f65e6cdf204dc87572)
 An example of use Docker for Nginx reverse proxy
