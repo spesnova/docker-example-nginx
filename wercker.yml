@@ -1,0 +1,21 @@
+box: wercker-labs/docker
+build:
+  steps:
+    - script:
+        name: Check docker version
+        code: |
+          docker -v
+    - script:
+        name: Install compose
+        code: |
+          curl -L https://github.com/docker/compose/releases/download/1.1.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/compose
+          chmod +x /usr/local/bin/compose
+          cd ${WERCKER_SOURCE_DIR}
+    - script:
+        name: Build image
+        code: >
+          compose build
+    - script:
+        name: Run test
+        code: >
+          script/test
