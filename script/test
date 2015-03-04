@@ -8,10 +8,13 @@ set -e
 export COMPOSE_PROJECT_NAME=test
 
 compose build
+compose stop
 compose rm --force
 compose up -d db
+sleep 2
 compose run --rm web rake db:create db:migrate
 compose up -d
+sleep 2
 
 docker kill infrataster > /dev/null 2>&1 || true
 docker rm   infrataster > /dev/null 2>&1 || true
