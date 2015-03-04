@@ -1,0 +1,23 @@
+#!/bin/bash
+#
+# Usage: script/test
+#
+
+set -e
+
+export COMPOSE_PROJECT_NAME=test
+
+compose build
+compose rm --force
+compose up -d db
+compose run --rm web rake db:create db:migrate
+compose up -d
+
+docker kill infrataster > /dev/null 2>&1 || true
+docker rm   infrataster > /dev/null 2>&1 || true
+docker run \
+  --rm \
+  --name infrataster \
+  -v $PWD/test/feature/spec:/test/spec \
+  -e TARGET_IP=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' test_nginx_1 ) \
+  quay.io/wantedly/infrataster:latest
