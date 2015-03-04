@@ -11,7 +11,7 @@ compose build
 compose stop
 compose rm --force
 compose up -d db
-sleep 2
+sleep 4
 compose run --rm web rake db:create db:migrate
 compose up -d
 sleep 2
@@ -22,5 +22,6 @@ docker run \
   --rm \
   --name infrataster \
   -v $PWD/test/feature/spec:/test/spec \
-  -e TARGET_IP=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' test_nginx_1 ) \
+  -e TARGET_IP=127.0.0.1 \
+  --net host \
   quay.io/wantedly/infrataster:latest

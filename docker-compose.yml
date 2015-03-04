@@ -1,10 +1,10 @@
 web:
   image: quay.io/spesnova/docker-example-rails
-  command: bundle exec puma -C config/puma.rb -b unix:///app/tmp/puma.sock
+  command: bundle exec puma -C config/puma.rb
   volumes:
     - /app
   ports:
-    - 3000
+    - 8092:3000
   links:
     - db
   environment:
@@ -18,6 +18,7 @@ web:
     - DATABASE_USER=hello
     - DATABASE_PASSWORD=world
     - SECRET_KEY_BASE=450a851180c712e6a7ba6f4ab4a9624caddfc02d842eef3315cc47f9b0a16ef3cb5e5b68184d998604076a05d32d108b465f7bfe23623222690be720c7bfd39c
+    - COLOR=green
 db:
   image: postgres:9.4.0
   ports:
@@ -29,5 +30,11 @@ nginx:
   build: .
   ports:
     - 80:80
+    - 8090:8090
+  volumes:
+    - /etc/nginx/switch/green:/etc/nginx/switch/green:ro
   volumes_from:
      - web
+  net: host
+  environment:
+    - SERVER_NAME=sample
