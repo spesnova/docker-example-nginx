@@ -1,0 +1,12 @@
+#!/bin/bash
+#
+# Usage: script/build
+# Description: push Nginx image to registry
+#
+
+set -e
+
+IMAGE="quay.io/spesnova/docker-example-nginx"
+
+docker push "${IMAGE}"
+
