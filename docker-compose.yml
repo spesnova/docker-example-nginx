@@ -21,7 +21,7 @@ web:
 db:
   image: postgres:9.4.0
   ports:
-    - 5432:5432
+    - 5432
   environment:
     - POSTGRES_USER=hello
     - POSTGRES_PASSWORD=world
